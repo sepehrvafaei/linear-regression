@@ -14,14 +14,13 @@ def linear_regression(x,y):
     theta=np.zeros(m)
     theta_current=theta
     cost_prevoius=0
-    cost_current=sum(np.array([val**2 for val in np.dot(x,theta)-y ])))/(2*n)
+    cost_current=np.dot(np.dot(x,theta)-y,np.dot(x,theta)-y)/(2*n)
     for i in range(iters):
         if(abs(cost_current-cost_previous)<precision):break
-        for j in range(m):
-            theta_current[j]-=alpha*(1/n)*sum(np.dot(np.dot(x,theta)-y,x[:,j]))
+        theta_current -= alpha*(1/n)*np.dot(np.dot(x,theta)-y,x)
         theta=theta_current
         cost_previous=cost_current
-        cost_current=sum(np.array([val**2 for val in np.dot(x,theta)-y ])))/(2*n)
+        cost_current=np.dot(np.dot(x,theta)-y,np.dot(x,theta)-y)/(2*n)
     print(theta)
 
 rng=np.random.default_rng()
