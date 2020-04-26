@@ -28,3 +28,4 @@ training_input=rng.integers(-5,5,size=(500,2))
 training_output=training_input[:,0]+training[:,1]+2*rng.standard_normal(500)
 #linear_regression(training_input,training_output)
 
+
